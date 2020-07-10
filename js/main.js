@@ -1,3 +1,5 @@
+let userDetailsCache = new Map();
+
 let linkElements = document.getElementsByTagName('a');
 for (key in linkElements) {
   // skip loop if the property is from prototype
@@ -6,6 +8,17 @@ for (key in linkElements) {
   let element = linkElements[key];
   element.onclick = function(e) {
     e.preventDefault();
+
+    let previousAddedRow = document.getElementById('addedRow');
+    if (previousAddedRow) previousAddedRow.remove();
+
+    let tableRowElement = e.target.parentNode.parentNode;
+    let userID = e.target.getAttribute('data-id');
+    if (userDetailsCache.has(userID)) {
+      tableRowElement.parentNode.insertBefore(userDetailsCache.get(userID), tableRowElement.nextSibling);
+      console.log('cache')
+      return;
+    }
 
     let error = false;
 
@@ -18,16 +31,12 @@ for (key in linkElements) {
       })
       .then(response => response.json())
       .then(data => {
-        let previousNode = document.getElementById('addedRow');
-        if (previousNode) previousNode.remove();
-
         let addedRow = document.createElement('tr');
         addedRow.id = 'addedRow';
         let addedCell = document.createElement('td');
         addedCell.colSpan = '3';
         addedRow.appendChild(addedCell);
 
-        let tableRowElement = e.target.parentNode.parentNode;
         tableRowElement.parentNode.insertBefore(addedRow, tableRowElement.nextSibling);
 
         if (error) {
@@ -52,6 +61,8 @@ for (key in linkElements) {
         span.appendChild(textnode);
         addedCell.appendChild(span);
         addedCell.appendChild(document.createElement('br'));
+
+        userDetailsCache.set(userID, addedRow);
       });
   } 
 }
