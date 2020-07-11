@@ -16,7 +16,6 @@ for (key in linkElements) {
     let userID = e.target.getAttribute('data-id');
     if (userDetailsCache.has(userID)) {
       tableRowElement.parentNode.insertBefore(userDetailsCache.get(userID), tableRowElement.nextSibling);
-      console.log('cache')
       return;
     }
 
