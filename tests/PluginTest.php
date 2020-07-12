@@ -1,32 +1,25 @@
-<?php
+<?php declare(strict_types=1);
+namespace silverabel;
+
 use PHPUnit\Framework\TestCase;
+
 use Brain\Monkey;
 
-define('ABSPATH', 1);
+require_once('MonkeyTestCase.php');
+const ABSPATH = 1;
 
-class MonkeyTestCase extends TestCase {
-
-  protected function setUp(): void {
-    parent::setUp();
-    Monkey\setUp();
-  }
-
-  protected function tearDown(): void {
-    Monkey\tearDown();
-    parent::tearDown();
-  }
+// unrecognized function in Brain Monkey
+function register_deactivation_hook()
+{
+    return null;
 }
 
-class MyTestCase extends MonkeyTestCase {
-
-  public function testAddHooks() {
-    // unrecognized function in Brain Monkey
-    function register_deactivation_hook() {
-      return;
+class PluginTest extends MonkeyTestCase
+{
+    public function testAddHooks()
+    {
+        UserDetailsPlugin::addHooks();
+        self::assertTrue(has_action('init', 'silverabel\UserDetailsPlugin::addRewrite'));
+        self::assertTrue(has_action('parse_request', 'silverabel\UserDetailsPlugin::userDetailsParse'));
     }
-
-    User_Details_Plugin::addHooks();
-    self::assertTrue( has_action( 'init', 'User_Details_Plugin::add_rewrite' ) );
-    self::assertTrue( has_action( 'parse_request', 'User_Details_Plugin::user_details_parse' ) );
-  }
 }
