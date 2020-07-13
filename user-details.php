@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /*
-Plugin Name: User Details2
+Plugin Name: User Details
 Author: Silver Abel
 Version: 1.0
 License: GPL3

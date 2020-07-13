@@ -1,5 +1,5 @@
 {
-    "name": "silverabel-user-details",
+    "name": "silverabel/user-details",
     "description": "Task for Inpsyde",
     "autoload-dev": {
         "classmap": [
