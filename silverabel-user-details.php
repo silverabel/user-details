@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 /*
 Plugin Name: User Details
+Author: Silver Abel
+Version: 1.0
 License:     GPL3
 
 User Details is free software: you can redistribute it and/or modify
