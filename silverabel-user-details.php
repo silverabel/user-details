@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 /*
-Plugin Name: User Details
+Plugin Name: User Details2
 Author: Silver Abel
 Version: 1.0
-License:     GPL3
+License: GPL3
 
 User Details is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
