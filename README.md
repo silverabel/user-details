@@ -12,7 +12,7 @@ Wordpress 5.4+
 ## Installation
 
 To use the plugin, clone this repository to your plugin folder and activate the plugin.
-"Composer update" is only required for testing. To start tests, run "./vendor/bin/phpunit tests".
+"Composer install" is only required for testing. To start tests, run "./vendor/bin/phpunit tests".
 
 ## Usage
 

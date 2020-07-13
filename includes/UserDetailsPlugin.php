@@ -32,7 +32,7 @@ class UserDetailsPlugin
                 die();
             }
 
-            $javascriptUrl = plugins_url() . '/silverabel-user-details/js/main.js';
+            $javascriptUrl = plugin_dir_url(__FILE__) . '../js/main.js';
 
             echo '<!doctype html>
 <html lang="en">
